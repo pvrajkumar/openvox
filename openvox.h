@@ -1,3 +1,5 @@
+// OpenVOX is distributed by the MIT License.
+
 #pragma once
 #define VOX_API_VERSION 0x00000100
 
