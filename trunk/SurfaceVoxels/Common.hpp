@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include <string.>
+#include <string>
 #include <vmath.hpp>
 #include <pez.h>
 #include <glew.h>

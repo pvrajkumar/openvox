@@ -1,5 +1,7 @@
 #pragma once
 
+#include <wchar.h>
+
 typedef struct PezConfigRec
 {
     const char* Title;

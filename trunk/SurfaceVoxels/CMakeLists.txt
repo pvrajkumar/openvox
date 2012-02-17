@@ -2,8 +2,7 @@ CMAKE_MINIMUM_REQUIRED( VERSION 2.6 )
 
 PROJECT( Contrast )
 
-FILE( GLOB LIB *.c *.h vmath.hpp )
-FILE( GLOB WINLIB pez.win.c )
+FILE( GLOB LIB glew.c glsw.c *.h vmath.hpp )
 
 FILE( GLOB MAIN_CPP  *.cpp)
 FILE( GLOB MAIN_H    *.hpp)
@@ -14,15 +13,18 @@ ADD_DEFINITIONS( -DGLEW_STATIC )
 INCLUDE_DIRECTORIES( . $ENV{CUDA_INC_PATH} )
 LINK_DIRECTORIES( $ENV{CUDA_LIB_PATH} )
 
-ADD_LIBRARY( tinylib ${LIB} )
-
 IF( WIN32 )
 
+    ADD_LIBRARY( tinylib ${LIB} pez.win.c )
     SOURCE_GROUP( "Shaders" FILES ${MAIN_GLSL} )
     SOURCE_GROUP( "Build" FILES CMakeLists.txt )
     ADD_DEFINITIONS( /wd4996 )
     SET( PLATFORM_LIBS opengl32 OpenCL )
     SET( CONSOLE_SYSTEM WIN32 )
+
+ELSE()
+
+    ADD_LIBRARY( tinylib ${LIB} pez.x11.c )
 
 ENDIF()
 

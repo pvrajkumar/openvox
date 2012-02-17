@@ -1,10 +1,13 @@
+#include "Common.hpp"
+
+using namespace std;
+
+#ifdef WIN32
 #include <windows.h>
 #include <gdiplus.h>
-#include "Common.hpp"
 
 #pragma comment(lib,"gdiplus.lib")
 
-using namespace std;
 using namespace Gdiplus;
 
 struct OverlayContext
@@ -119,3 +122,18 @@ TexturePod OverlayText(string message)
 
     return oc.MessageTexture;
 }
+#else
+
+TexturePod OverlayTextf(const char* pStr, ...)
+{
+    TexturePod not_impl = {0};
+    return not_impl;
+}
+
+TexturePod OverlayText(string message)
+{
+    TexturePod not_impl = {0};
+    return not_impl;
+}
+
+#endif
