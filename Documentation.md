@@ -1,0 +1,1 @@
+OpenVOX is a <i>real-time</i> voxelization and volume-transformation library, built on top of OpenCL.
